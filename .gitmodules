@@ -1,0 +1,9 @@
+[submodule "js/jszip"]
+	path = js/jszip
+	url = https://github.com/Stuk/jszip.git
+[submodule "js/Jcrop"]
+	path = js/Jcrop
+	url = https://github.com/tapmodo/Jcrop.git
+[submodule "js/jquery"]
+	path = js/jquery
+	url = https://github.com/jquery/jquery.git
