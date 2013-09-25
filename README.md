@@ -18,3 +18,5 @@ TODO
 * jpg billedestørrelse
 * billedopload, hvis eleven selv har et billede
 * vejledning i at aktivere kamera
+* mulighed for at rotere video billedet, 
+	hvis man drejer eksternt webcamera til højformat
