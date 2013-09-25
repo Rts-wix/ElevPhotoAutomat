@@ -20,44 +20,6 @@
 		navigator.msGetUserMedia
 	);
 	
-/*
-//navigator.getUserMedia( {video: true}, function(stream) {
-//		// get video element
-//		var video = document.getElementById('myVideo');
-//		
-//		// recieve input from webcam
-//		video.src = window.URL.createObjectURL(stream);
-//		
-//		// get canvas element
-//		var canvas = document.getElementById("myCanvas");
-//		
-//		// wait 50ms, to let webcam capture some video
-//		setTimeout(function () {
-//			// set canvas size from video
-//			canvas.width = video.videoWidth;
-//			canvas.height = video.videoHeight;
-//			
-//			// draw vidoeframe onto tha canvas
-//			canvas.getContext('2d').drawImage(video,0,0);
-//			// extract iamge from canvas, base64 PNG
-//			var imgData = canvas.toDataURL("img/png");
-//			// remove extraneous data from start of string
-//			imgData = imgData.replace('data:image/png;base64,', '');
-//			
-//			// JSON encode data
-//			var postData = JSON.stringify({ imageData: imgData });
-//			
-//			// Post to server
-//			$.ajax({
-//				url:"[endpoint goes here]",
-//				type:"POST",
-//				data:postData,
-//				contentType:"application/json"
-//			});
-//			
-//		}, 50);
-//	});
-*/		
 	function captureImage(video, canvas)
 	{
 		//var canvas = new Canvas();
@@ -70,13 +32,7 @@
 		var image = document.getElementById("imgPreview");
 		image.src = imgData;
 	}
-	
-//	$('#imgPreview').Jcrop({
-//		onChange : updatePreview,
-//		onSelect : updatePreview,
-//		aspectRatio : 1/1.41
-//	});
-	
+		
 	function updatePreview(c) {
 		if(parseInt(c.w) > 0) {
 			// Show image preview
@@ -152,7 +108,8 @@
 			{
 				var elevDiv = document.getElementById("elevElem").cloneNode(true);
 		
-				elevDiv.querySelector('img').setAttribute('src', 'data:image/jpeg;base64,' + elevData.billede);
+				elevDiv.querySelector('img')
+					.setAttribute('src', 'data:image/jpeg;base64,' + elevData.billede);
 				elevDiv.querySelector('span').innerHTML = elevData.navn;
 		
 				document.getElementById('elevListe').appendChild(elevDiv);
