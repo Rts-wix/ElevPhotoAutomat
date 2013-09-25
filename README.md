@@ -17,3 +17,4 @@ TODO
 * Slet hold, kaskade
 * jpg billedestørrelse
 * billedopload, hvis eleven selv har et billede
+* vejledning i at aktivere kamera
