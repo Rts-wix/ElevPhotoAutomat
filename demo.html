@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <title>ElevPhotoMat</title>
 
-<script src="js/jquery.min.js"></script>
+<script src="js/jquery/dist/jquery.min.js"></script>
 <script src="js/Jcrop/js/jquery.Jcrop.min.js"></script>
-<script type="text/javascript" src="js/jszip.js"></script>
+<script type="text/javascript" src="js/jszip/jszip.js"></script>
 
 <link rel="stylesheet" type="text/css" href="js/Jcrop/css/jquery.Jcrop.min.css">
 
@@ -36,12 +36,12 @@
 	function updatePreview(c) {
 		if(parseInt(c.w) > 0) {
 			// Show image preview
-			//var imageObj = $("#imgPreview")[0];
 			var imageObj = $("#myCanvas")[0];
 			var canvas = $("#canvasPreview")[0];
 			var context = canvas.getContext("2d");
 			context.drawImage(imageObj, 
-								c.x*2, c.y*2, c.w*2, c.h*2, 
+								parseInt(c.x)*2, Math.abs( parseInt(c.y))*2, 
+								parseInt(c.w)*2, parseInt(c.h)*2, 
 								0, 0, canvas.width, canvas.height);
 		}
 	};
@@ -51,16 +51,10 @@
 	{
 		var video = document.getElementById('myVideo');
 		
-		// recieve input from webcam
-		//video.src = window.URL.createObjectURL(stream);
-		
 		// get canvas element
 		var canvas = document.getElementById("myCanvas");
 		
 		captureImage(video, canvas);
-		//$('#imgPreview').siblings().remove();
-		//$('#imgPreview').show();
-		//$('#imgPreview').Jcrop().destroy();
 		
 		// Jcrop hack??
 		$(".jcrop-holder img").attr("src", $('#imgPreview').attr("src"));
@@ -68,7 +62,7 @@
 			onChange : updatePreview,
 			onSelect : updatePreview,
 			aspectRatio : 343/453,
-			setSelect : [69, 0, 151, 240]
+			setSelect : [69, 1, 151, 240]
 		});
 	}
 	
@@ -87,7 +81,6 @@
 			billede: imgData
 		};
 		localStorage[cprnr.value] = JSON.stringify(elevData);
-		//localStorage['99'] = JSON.stringify({i: imgData});
 		Load();
 	}
 	
@@ -108,8 +101,7 @@
 			{
 				var elevDiv = document.getElementById("elevElem").cloneNode(true);
 		
-				elevDiv.querySelector('img')
-					.setAttribute('src', 'data:image/jpeg;base64,' + elevData.billede);
+				elevDiv.querySelector('img').setAttribute('src', 'data:image/jpeg;base64,' + elevData.billede);
 				elevDiv.querySelector('span').innerHTML = elevData.navn;
 		
 				document.getElementById('elevListe').appendChild(elevDiv);
@@ -151,8 +143,12 @@
 	width:320px;
 	height:240px;
 	float:left;
-	
-	transform:rotate(90);
+}
+
+..video
+{	
+	transform:rotate(90deg);
+	-webkit-transform:rotate(90deg);
 }
 
 button
