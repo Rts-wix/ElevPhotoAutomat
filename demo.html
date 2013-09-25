@@ -1,0 +1,253 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ElevPhotoMat</title>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.Jcrop.js"></script>
+<script type="text/javascript" src="js/jszip.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/jquery.Jcrop.css">
+
+<script language="javascript" type="text/javascript">
+
+	navigator.getUserMedia = 
+	(
+		navigator.getUserMedia ||
+		navigator.webkitGetUserMedia ||
+		navigator.mozGetUserMedia ||
+		navigator.msGetUserMedia
+	);
+	
+/*
+//navigator.getUserMedia( {video: true}, function(stream) {
+//		// get video element
+//		var video = document.getElementById('myVideo');
+//		
+//		// recieve input from webcam
+//		video.src = window.URL.createObjectURL(stream);
+//		
+//		// get canvas element
+//		var canvas = document.getElementById("myCanvas");
+//		
+//		// wait 50ms, to let webcam capture some video
+//		setTimeout(function () {
+//			// set canvas size from video
+//			canvas.width = video.videoWidth;
+//			canvas.height = video.videoHeight;
+//			
+//			// draw vidoeframe onto tha canvas
+//			canvas.getContext('2d').drawImage(video,0,0);
+//			// extract iamge from canvas, base64 PNG
+//			var imgData = canvas.toDataURL("img/png");
+//			// remove extraneous data from start of string
+//			imgData = imgData.replace('data:image/png;base64,', '');
+//			
+//			// JSON encode data
+//			var postData = JSON.stringify({ imageData: imgData });
+//			
+//			// Post to server
+//			$.ajax({
+//				url:"[endpoint goes here]",
+//				type:"POST",
+//				data:postData,
+//				contentType:"application/json"
+//			});
+//			
+//		}, 50);
+//	});
+*/		
+	function captureImage(video, canvas)
+	{
+		//var canvas = new Canvas();
+		canvas.width = video.videoWidth;
+		canvas.height = video.videoHeight;
+		
+		// draw vidoeframe onto tha canvas
+		canvas.getContext('2d').drawImage(video,0,0);
+		var imgData = canvas.toDataURL("img/png");
+		var image = document.getElementById("imgPreview");
+		image.src = imgData;
+	}
+	
+//	$('#imgPreview').Jcrop({
+//		onChange : updatePreview,
+//		onSelect : updatePreview,
+//		aspectRatio : 1/1.41
+//	});
+	
+	function updatePreview(c) {
+		if(parseInt(c.w) > 0) {
+			// Show image preview
+			//var imageObj = $("#imgPreview")[0];
+			var imageObj = $("#myCanvas")[0];
+			var canvas = $("#canvasPreview")[0];
+			var context = canvas.getContext("2d");
+			context.drawImage(imageObj, 
+								c.x*2, c.y*2, c.w*2, c.h*2, 
+								0, 0, canvas.width, canvas.height);
+		}
+	};
+	
+
+	function captureClickHandler(e)
+	{
+		var video = document.getElementById('myVideo');
+		
+		// recieve input from webcam
+		//video.src = window.URL.createObjectURL(stream);
+		
+		// get canvas element
+		var canvas = document.getElementById("myCanvas");
+		
+		captureImage(video, canvas);
+		//$('#imgPreview').siblings().remove();
+		//$('#imgPreview').show();
+		//$('#imgPreview').Jcrop().destroy();
+		
+		// Jcrop hack??
+		$(".jcrop-holder img").attr("src", $('#imgPreview').attr("src"));
+		$('#imgPreview').Jcrop({
+			onChange : updatePreview,
+			onSelect : updatePreview,
+			aspectRatio : 343/453,
+			setSelect : [69, 0, 151, 240]
+		});
+	}
+	
+	function gemClickHandler(eventBoss)
+	{
+		var elevNavn = document.getElementById('navn');
+		var cprnr = document.getElementById('cprnr');
+		var canvasPreview = document.getElementById('canvasPreview');
+		
+		var imgData = canvasPreview.toDataURL("image/jpeg");
+		// remove extraneous data from start of string
+		imgData = imgData.replace('data:image/jpeg;base64,', '');
+		
+		var elevData = {
+			navn: elevNavn.value,
+			billede: imgData
+		};
+		localStorage[cprnr.value] = JSON.stringify(elevData);
+		//localStorage['99'] = JSON.stringify({i: imgData});
+		Load();
+	}
+	
+	navigator.getUserMedia( {video: true}, function(stream) {
+		// get video element
+		var video = document.getElementById('myVideo');
+		
+		// recieve input from webcam
+		video.src = window.URL.createObjectURL(stream);
+	});
+
+	function Load()
+	{
+		for (cprNr in localStorage)
+		{
+			var elevData = JSON.parse(localStorage[cprNr]);
+			if (elevData.billede != null)
+			{
+				var elevDiv = document.getElementById("elevElem").cloneNode(true);
+		
+				elevDiv.querySelector('img').setAttribute('src', 'data:image/jpeg;base64,' + elevData.billede);
+				elevDiv.querySelector('span').innerHTML = elevData.navn;
+		
+				document.getElementById('elevListe').appendChild(elevDiv);
+			}
+		}
+	}
+	
+	function zipClickHandler(event)
+	{
+	
+		var zip = new JSZip();
+
+		for (cprNr in localStorage)
+		{
+			var elevData = JSON.parse(localStorage[cprNr]);
+			if (elevData.billede != null)
+			{
+				zip.file(cprNr + ".jpg", elevData.billede, {base64: true});
+			}
+		}
+
+		var blobLink = document.getElementById('blob');
+		try {
+			blobLink.download = "Hold_xx.zip";
+			blobLink.href = window.URL.createObjectURL(zip.generate({type:"blob"}));
+		} catch(e) {
+			blobLink.innerHTML += " (not supported on this browser)";
+		}
+		return false;
+	}
+
+</script>
+
+<style>
+
+.video, .video video, .video canvas 
+{
+	background-color:gray;
+	width:320px;
+	height:240px;
+	float:left;
+	
+	transform:rotate(90);
+}
+
+button
+{
+	float:left;	
+}
+
+.image
+{
+	width:343px;
+	height:453px;
+	float:left;
+	background-color:#FF9;
+}
+
+</style>
+
+</head>
+
+<body onLoad="Load()">
+
+<div class="video">
+    <video autoplay id="myVideo"></video>
+</div>
+
+<button onClick="captureClickHandler(event)" value="Capture">Capt</button>
+
+    <canvas id="myCanvas" style="display:none"></canvas>
+
+<div class="video">
+	<img id="imgPreview" class="video" />
+</div>
+
+<div class="image">
+    <canvas id="canvasPreview" class="image" />
+</div> 
+
+<br>
+<div style="display:block;clear:both">
+	<label for="navn" >Navn:</label><input id="navn" type="text" >
+	<label for="cprnr" >CprNr:</label><input id="cprnr" type="text" >
+	<br>
+	<button id="gem" onClick="gemClickHandler(event)">Gem</button>
+	
+</div>
+
+<div id="elevListe">
+	<p id="elevElem" style="clear:both">
+		<img src="" style="width:75px;height:100px;"> <span></span>
+	</p>
+</div>
+<hr>
+<a id="blob" href="#" onClick="zipClickHandler(event)">ZIP</a>
+</body>
+</html>
