@@ -7,7 +7,6 @@ pt. testet med Google Chrome
 ____
 TODO
 ----	
-* Git importerede sourcelib som subprojects
 * Design i css (flere skins?)
 * Navngiv hold/aktivitet
 * Gem hold i localStorage
@@ -20,3 +19,7 @@ TODO
 * vejledning i at aktivere kamera
 * mulighed for at rotere video billedet, 
 	hvis man drejer eksternt webcamera til højformat
+
+Done
+----
+* Git importerede sourcelib som subprojects
