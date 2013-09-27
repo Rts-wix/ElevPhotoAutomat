@@ -4,6 +4,3 @@
 [submodule "js/Jcrop"]
 	path = js/Jcrop
 	url = https://github.com/tapmodo/Jcrop.git
-[submodule "js/jquery"]
-	path = js/jquery
-	url = https://github.com/jquery/jquery.git
