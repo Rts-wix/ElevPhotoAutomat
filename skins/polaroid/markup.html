@@ -1,0 +1,93 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ElevPhoto</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<header>
+    	<div id="topBoks">
+        	<h1>Elevphoto</h1>
+        </div>
+        <!-- billeder som er mere specifikke for dette skin -->
+        <img src="billeder/polaroid1.png" class="polaroid" id="billede1">
+        <!--<img src="billeder/polaroid2.png" class="polaroid" id="billedeX">-->
+        <img src="billeder/polaroid2.png" class="polaroid" id="billede2">
+    </header>
+
+    <section id="billedVaerksted">
+    	<div id="elevoplysninger">
+        <input id="navn" type="text" 
+        	placeholder="Fornavn Efternavn" pattern="^(?:[A-ZÆØÅ](?:[a-zæøå]+|\.)\s?){2,}$">
+        	<label for="navn" >Navn</label>
+		<input id="cprnr" type="text" 
+        	placeholder="fx 300495-1234" pattern="^\d{6}(?: |-)?\d{4}$">
+            <label for="cprnr" >CprNr</label>
+        </div>
+    	<!-- Elementer til billedbehandling -->
+		<div id="levendeVideo">
+        	<img id="videoSoegerMaske" src="" />
+            <video autoplay id="primaerVideo" />
+        </div>
+        
+        <canvas id="canvasPreview" style="display:none"></canvas>
+		<img id="imgPreview" class="video" />
+        
+        <img id="polaroidKamera" src="billeder/PolaroidG1000.png">
+        <div id="polaroidResultat">
+        	<canvas id="canvasDone"/>
+        </div>
+        
+        <!-- infotekster -->
+        <p id="NavnCPR" class="infoTekst">Udfyld dit navn <br>og cpr-nummer.</p>
+        <p id="klikVideo" class="infoTekst">Klik på videoen!</p>
+        <p id="crop" class="infoTekst">
+        	Træk i den <br>
+            stiplede <br>
+            ramme for <br>
+            at vælge <br>
+            beskæring.
+        </p>
+        <p id="klikKamera" class="infoTekst">Klik på kameraet <br>
+			for at gemme!</p>
+        
+        
+    </section>
+	
+    <section id="klasseListe">
+    	<p id="elevElem" style="clear:both;display:none">
+            <img src="" style="width:75px;height:100px;"> <span></span>
+        </p>
+        
+      <p id="elevElem" style="">
+            <img src="" style="width:75px;height:100px;"> <span>Kalle</span>
+        </p>
+      <p id="elevElem" style="">
+            <img src="" style="width:75px;height:100px;"> <span>Kalle</span>
+        </p>
+      <p id="elevElem" style="">
+            <img src="" style="width:75px;height:100px;"> <span>Kalle</span>
+        </p>
+        <p id="elevElem" style="">
+            <img src="" style="width:75px;height:100px;"> <span>Kalle</span>
+        </p>
+      <p id="elevElem" style="">
+            <img src="" style="width:75px;height:100px;"> <span>Kalle</span>
+        </p>
+      <p id="elevElem" style="">
+            <img src="" style="width:75px;height:100px;"> <span>Kalle</span>
+        </p>
+        <p id="elevElem" style="">
+            <img src="" style="width:75px;height:100px;"> <span>Kalle</span>
+        </p>
+        
+    </section>
+
+	<footer>
+    </footer>
+
+</body>
+</html>

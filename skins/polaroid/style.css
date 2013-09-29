@@ -1,0 +1,237 @@
+﻿@charset "UTF-8";
+/* CSS Document */
+
+@import url("webfont/jr!ha___-webfont.css");
+@import url("webfont/oswald.css");
+
+*
+{
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+html
+{
+	background-color:silver;
+}
+
+body
+{
+	width:928px;
+	margin:0 auto;
+	background-color:white;	
+	position:relative;
+}
+
+/****************
+	TOPPEN
+****************/
+header
+{
+	position:relative;
+}
+
+#topBoks
+{
+	width:100%;
+	height:194px;
+	background-color:#001A3E;
+	
+	background-image:url(billeder/AndyWarhole.png);
+	background-repeat:no-repeat;
+	background-position:right;
+	overflow:hidden;
+}
+
+#topBoks h1
+{
+	font-family: "oswaldbold";
+	font-size: 120px;
+	color: white;
+	text-transform: uppercase;
+	float: left;
+	margin-top: 55px;
+	margin-left: 20px;
+	letter-spacing: 0.05em;
+}
+
+.polaroid
+{
+	width:171px;
+	height:172px;
+	border:1px solid #999;
+	-webkit-box-shadow: 1px 1px 3px 0px #000; /* Android 2.3+, iOS 4.0.2-4.2, Safari 3-4 */
+    box-shadow: 		1px 1px 3px 0px rgba(0,0,0,0.5); /* Chrome 6+, Firefox 4+, IE 9+, iOS 5+, Opera 10.50+ */
+	position:absolute;
+}
+
+#billede1
+{
+	-webkit-transform: rotate(-5.5deg);  /* Chrome, Safari 3.1+ */
+     -moz-transform: rotate(-5.5deg);  /* Firefox 3.5-15 */
+      -ms-transform: rotate(-5.5deg);  /* IE 9 */
+       -o-transform: rotate(-5.5deg);  /* Opera 10.50-12.00 */
+          transform: rotate(-5.5deg);  /* Firefox 16+, IE 10+, Opera 12.10+ */
+	
+	top:160px;
+	left:663px;
+}
+
+#billede2
+{
+	-webkit-transform: rotate(10deg);  /* Chrome, Safari 3.1+ */
+     -moz-transform: rotate(10deg);  /* Firefox 3.5-15 */
+      -ms-transform: rotate(10deg);  /* IE 9 */
+       -o-transform: rotate(10deg);  /* Opera 10.50-12.00 */
+          transform: rotate(10deg);  /* Firefox 16+, IE 10+, Opera 12.10+ */
+	right:-45px;
+	top:220px;
+}
+
+section
+{
+	float:none;
+}
+
+#billedVaerksted
+{
+	height:720px;
+}
+
+#billedVaerksted #elevoplysninger {
+	height: 100px;
+}
+
+#billedVaerksted input
+{
+	margin-top: 15px;
+	margin-left: 375px;
+	width:222px;
+	height:25px;
+	border:1px solid #001A3E;
+	border-radius:2px;
+	background-color:#275689;
+	color:#9EF0F1;
+	padding:0 2px;
+	font-family:oswaldlight;
+	letter-spacing:0.1em;
+}
+
+#billedVaerksted input:hover
+{
+	-webkit-box-shadow: 1px 1px 8px 8px rgba(68,224,80,0.5); /* Android 2.3+, iOS 4.0.2-4.2, Safari 3-4 */
+    box-shadow: 		1px 1px 8px 8px rgba(68,224,80,0.5); /* Chrome 6+, Firefox 4+, IE 9+, iOS 5+, Opera 10.50+ */
+}
+
+#billedVaerksted label {
+	font-family: oswaldbook;
+	text-transform: uppercase;
+	margin-left: 0px;
+	vertical-align: middle;
+}
+
+#levendeVideo {
+	height: 187px;
+	width: 248px;
+	background-color:#275689;
+	margin-left:10px;
+	float:left;
+}
+
+#levendeVideo:hover
+{
+	-webkit-box-shadow: 1px 1px 8px 8px rgba(68,224,80,0.5); /* Android 2.3+, iOS 4.0.2-4.2, Safari 3-4 */
+    box-shadow: 		1px 1px 8px 8px rgba(68,224,80,0.5); /* Chrome 6+, Firefox 4+, IE 9+, iOS 5+, Opera 10.50+ */
+}
+
+#imgPreview
+{
+	width:494px;
+	height:371px;
+	background-color:#275689;
+	margin-left:10px;
+	float:left;
+}
+
+#polaroidKamera
+{
+	position:absolute;
+	top:505px;
+	left:68px;
+}
+
+#polaroidKamera:hover
+{
+	-webkit-box-shadow: 1px 1px 8px 8px rgba(68,224,80,0.5); /* Android 2.3+, iOS 4.0.2-4.2, Safari 3-4 */
+    box-shadow: 		1px 1px 8px 8px rgba(68,224,80,0.5); /* Chrome 6+, Firefox 4+, IE 9+, iOS 5+, Opera 10.50+ */
+}
+
+#polaroidResultat
+{
+	width:160px;
+	height:211px;
+	
+	position:absolute;
+	top:700px;
+	left:123px;
+
+  -webkit-transform: rotate(-10deg);  /* Chrome, Safari 3.1+ */
+     -moz-transform: rotate(-10deg);  /* Firefox 3.5-15 */
+      -ms-transform: rotate(-10deg);  /* IE 9 */
+       -o-transform: rotate(-10deg);  /* Opera 10.50-12.00 */
+          transform: rotate(-10deg);  /* Firefox 16+, IE 10+, Opera 12.10+ */
+		  
+	border:1px solid silver;
+	
+	background-color:white;
+
+}
+
+.infoTekst
+{
+	position:absolute;
+	font-family:jrhandregular;
+	font-size:30px;
+	line-height:30px;
+	color:#001A3E;
+  -webkit-transform: rotate(-6deg);  /* Chrome, Safari 3.1+ */
+     -moz-transform: rotate(-6deg);  /* Firefox 3.5-15 */
+      -ms-transform: rotate(-6deg);  /* IE 9 */
+       -o-transform: rotate(-6deg);  /* Opera 10.50-12.00 */
+          transform: rotate(-6deg);  /* Firefox 16+, IE 10+, Opera 12.10+ */
+
+}
+
+#NavnCPR
+{
+	top: 210px;
+	left: 150px;
+}
+
+#klikVideo
+{
+	top:250px;
+	left: 10px;
+}
+#crop
+{
+	top:420px;
+	right: 10px;
+}
+#klikKamera
+{
+	top:680px;
+	left: 280px;
+}	
+
+#klasseListe
+{
+	-moz-column-count:2; /* Firefox */
+	-webkit-column-count:2; /* Safari and Chrome */
+	column-count:2;
+	
+	-moz-column-gap:20px; /* Firefox */
+	-webkit-column-gap:20px; /* Safari and Chrome */
+	column-gap:20px;
+}
