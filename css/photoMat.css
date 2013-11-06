@@ -7,11 +7,13 @@
 	float:left;
 }
 
-..video
+/*
+.video
 {	
 	transform:rotate(90deg);
 	-webkit-transform:rotate(90deg);
 }
+*/
 
 button
 {

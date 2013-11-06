@@ -24,6 +24,10 @@
 			// Show image preview
 			var imageObj = $("#myCanvas")[0];
 			var canvas = $("#canvasPreview")[0];
+			
+			canvas.width = 343;
+			canvas.height = 453;
+
 			var context = canvas.getContext("2d");
 			context.drawImage(imageObj, 
 								parseInt(c.x)*2, Math.abs( parseInt(c.y))*2, 
@@ -70,27 +74,37 @@
 		Load();
 	}
 	
-	navigator.getUserMedia( {video: true}, function(stream) {
-		// get video element
-		var video = document.getElementById('myVideo');
-		
-		// recieve input from webcam
-		video.src = window.URL.createObjectURL(stream);
-	});
+	navigator.getUserMedia( {video: true}, 
+		function(stream) {
+			// get video element
+			var video = document.getElementById('myVideo');
+			
+			// recieve input from webcam
+			video.src = window.URL.createObjectURL(stream);
+		},
+		function(err) {
+			console.log("The following error occured: " + err);
+		}
+	);
 
 	function Load()
 	{
+		var elevListe = document.getElementById('elevListe');
+		var elevElem = document.getElementById("elevElem");
+
+		elevListe.innerHTML = "";
+
 		for (cprNr in localStorage)
 		{
 			var elevData = JSON.parse(localStorage[cprNr]);
 			if (elevData.billede != null)
 			{
-				var elevDiv = document.getElementById("elevElem").cloneNode(true);
+				var elevDiv = elevElem.cloneNode(true);
 		
 				elevDiv.querySelector('img').setAttribute('src', 'data:image/jpeg;base64,' + elevData.billede);
 				elevDiv.querySelector('span').innerHTML = elevData.navn;
 		
-				document.getElementById('elevListe').appendChild(elevDiv);
+				elevListe.appendChild(elevDiv);
 			}
 		}
 	}
