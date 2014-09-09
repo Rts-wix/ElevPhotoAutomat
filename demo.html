@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ElevPhotoMat</title>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="js/Jcrop/js/jquery.Jcrop.min.js"></script>
+<script type="text/javascript" src="js/jszip/jszip.js"></script>
+<link rel="stylesheet" type="text/css" href="js/Jcrop/css/jquery.Jcrop.min.css">
+<script rel="javascript" type="text/javascript" src="js/photoMat.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/photoMat.css"> 
+
+</head>
+
+<body onLoad="Load()">
+
+<div class="video">
+    <video autoplay id="myVideo"></video>
+</div>
+
+<button onClick="captureClickHandler(event)" value="Capture">Capt</button>
+
+    <canvas id="myCanvas" style="display:none"></canvas>
+
+<div class="video">
+	<img id="imgPreview" class="video" />
+</div>
+
+<div class="image">
+    <canvas id="canvasPreview" class="image" />
+</div> 
+
+<br>
+<div style="display:block;clear:both">
+	<label for="navn" >Navn:</label><input id="navn" type="text" >
+	<label for="cprnr" >CprNr:</label><input id="cprnr" type="text" >
+	<br>
+	<button id="gem" onClick="gemClickHandler(event)">Gem</button>
+	
+</div>
+
+<div id="elevListe">
+	
+</div>
+<hr>
+<a id="blob" href="#" onClick="zipClickHandler(event)">ZIP</a>
+<p id="elevElem" style="clear:both">
+		<img src="" style="width:75px;height:100px;"> <span></span>
+	</p>
+</body>
+</html>
