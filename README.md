@@ -5,7 +5,7 @@ Tag billeder i din webrowser til elevplan og studiekort
 
 pt. testet med Google Chrome
 
-Der er en tidlig demo på http://javascriptsnippets.azurewebsites.net/elevPhotoAutomat/demo.html.
+Der er en tidlig demo på http://rts-wix.github.io/ElevPhotoAutomat/
 ____
 TODO
 ----	
